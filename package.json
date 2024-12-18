@@ -1,0 +1,32 @@
+{
+  "name": "mod-10",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cli-table3": "^0.6.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "inquirer": "^12.2.0",
+    "pg": "^8.13.1",
+    "typescript": "^5.7.2"
+  },
+  
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.10.1",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.2"
+  }
+}
