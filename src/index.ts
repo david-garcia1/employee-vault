@@ -1,49 +1,50 @@
 import inquirer from "inquirer";
 import express from "express";
-import { connectToDb } from "./connection.js"
-import { viewAllDeparments, viewAllRoles, viewEmployees } from "./actions.js";
+import { connectToDb } from "./connection.js";
+import { viewAllDepartments, viewAllRoles, viewEmployees, addDepartment, addRole, addEmployee, changeRole,
+} from "./actions.js";
 
-await connectToDb;
+await connectToDb();
 
 const app = express();
 
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const startCli = (): void => {
-    inquirer
+  inquirer
     .prompt([
-        {
-            type: "list",
-            name: "action",
-            message: "what would you like to do?",
-            choices: [
-                "view all departments",
-                "view all roles",
-                "view all employees",
-                "add a department",
-                "add a role",
-                "add an employee",
-                "change employee role",
-            ],
-        },
+      {
+        type: "list",
+        name: "action",
+        message: "What would you like to do?",
+        choices: [
+          "View all departments",
+          "View all roles",
+          "View all employees",
+          "Add a department",
+          "Add a role",
+          "Add an employee",
+          "Change an employee role",
+        ],
+      },
     ])
-.then((answers) => {
-        if (answers.action === "view all departments") {
-          viewAllDeparments(startCli);
-        } else if (answers.action === "View all roles") {
-            viewAllRoles(startCli);
-        } else if (answers.action === "View all employees") {
-            viewEmployees(startCli);
-        } else if (answers.action === "add a department") {
-            
-        } else if (answers.action === "add a role") {
-
-        } else if (answers.action === "add an employee") {
-
-        } else if (answers.action === "change employee role") {
-
-        }
+    .then((answers) => {
+      if (answers.action === "View all departments") {
+        viewAllDepartments(startCli);
+      } else if (answers.action === "View all roles") {
+        viewAllRoles(startCli);
+      } else if (answers.action === "View all employees") {
+        viewEmployees(startCli);
+      } else if (answers.action === "Add a department") {
+        addDepartment(startCli);
+      } else if (answers.action === "Add a role") {
+        addRole(startCli);
+      } else if (answers.action === "Add an employee") {
+        addEmployee(startCli);
+      } else if (answers.action === "Change an employee role") {
+        changeRole(startCli);
+      }
     });
 };
 
